@@ -39,7 +39,7 @@ void RankingPeliculas::ordenar() {
 
     for (int j = i + 1; j < _cantidad; j++) {
       //if(_peliculas[j].getFechaPublicacion().toString("YYYY/MM/DD") > _peliculas[mayor].getFechaPublicacion().toString("YYYY/MM/DD")) {
-      //if (_peliculas[j].getTitulo().size() > _peliculas[mayor].getTitulo().size()) {
+      //if(_peliculas[j].getTitulo().size() > _peliculas[mayor].getTitulo().size()) {
 
       if (_peliculas[j].getPuntuacion() > _peliculas[mayor].getPuntuacion()) {
         mayor = j;
