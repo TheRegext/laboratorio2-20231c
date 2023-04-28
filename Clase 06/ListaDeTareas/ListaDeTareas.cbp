@@ -34,8 +34,6 @@
 		</Compiler>
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
-		<Unit filename="ListaDeTareas.cpp" />
-		<Unit filename="ListaDeTareas.h" />
 		<Unit filename="Tarea.cpp" />
 		<Unit filename="Tarea.h" />
 		<Unit filename="funciones.cpp" />
