@@ -1,18 +1,19 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 #include "Tarea.h"
 using namespace std;
 
 Tarea::Tarea(){
   _ID = 0;
-  _descripcion = "";
+  strcpy(_descripcion, "");
   _nivel = 0;
   _estado = 0;
 }
 
-Tarea::Tarea(string descripcion, Fecha fechaLimite, int nivel, int estado){
-   _ID = 0;
-   _descripcion = descripcion;
+Tarea::Tarea(int ID, string descripcion, Fecha fechaLimite, int nivel, int estado){
+   _ID = ID;
+   strcpy(_descripcion, descripcion.c_str());
    _nivel = nivel;
    _estado = estado;
    _fechaLimite = fechaLimite;
@@ -22,7 +23,9 @@ int Tarea::getID(){
    return _ID;
 }
 std::string Tarea::getDescripcion(){
-   return _descripcion;
+   std::string descripcion;
+   descripcion = _descripcion;
+   return descripcion;
 }
 Fecha Tarea::getFechaLimite(){
    return _fechaLimite;
@@ -48,7 +51,7 @@ void Tarea::setID(int ID){
    _ID = ID;
 }
 void Tarea::setDescripcion(std::string descripcion){
-   _descripcion = descripcion;
+   strcpy(_descripcion, descripcion.c_str());
 }
 void Tarea::setFechaLimite(Fecha fechaLimite){
    _fechaLimite = fechaLimite;

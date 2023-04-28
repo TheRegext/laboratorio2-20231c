@@ -19,20 +19,13 @@ int getInteger(int minimo = INT_MIN, int maximo = INT_MAX){
    }
 }
 
-ListaDeTareas hardcodearTareas(){
+void mostrarTarea(Tarea tarea){
 
-   ListaDeTareas lista;
-   lista.agregar(Tarea("Arañar cortinas", Fecha(23, 4, 2023), 2));
-   lista.agregar(Tarea("Maullar", Fecha(3, 5, 2023), 1));
-   lista.agregar(Tarea("Dormir todo el día", Fecha(13, 5, 2023), 1));
-   lista.agregar(Tarea("Dejar pelo por todos lados", Fecha(10, 6, 2023), 1));
-   lista.agregar(Tarea("Cazar bichos", Fecha(1, 7, 2023), 3));
-   lista.agregar(Tarea("Comer croquetas", Fecha(21, 4, 2023), 3));
-   lista.agregar(Tarea("Comer atún", Fecha(27, 4, 2023), 1));
-   lista.agregar(Tarea("Morder", Fecha(13, 5, 2023), 1, 1));
-   lista.agregar(Tarea("Ir a los techos", Fecha(13, 8, 2023), 2));
-
-   return lista;
+   cout << "ID          : " << tarea.getID() << endl;
+   cout << "Descripcion : " << tarea.getDescripcion() << endl;
+   cout << "Fecha       : " << tarea.getFechaLimite().toString() << endl;
+   cout << "Dificultad  : " << tarea.getNivelDificultad() << endl;
+   cout << "Estado      : " << tarea.getDescripcionEstado() << endl;
 
 }
 

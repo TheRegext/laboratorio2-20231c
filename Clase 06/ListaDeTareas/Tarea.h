@@ -7,16 +7,14 @@ class Tarea
 {
 private:
   int _ID;
-  std::string _descripcion;
+  char _descripcion[30];
   Fecha _fechaLimite;
   int _nivel;
   int _estado;
 
-  void ordenar();
-
 public:
   Tarea();
-  Tarea(std::string descripcion, Fecha fechaLimite, int nivel, int estado = 0);
+  Tarea(int ID, std::string descripcion, Fecha fechaLimite, int nivel, int estado = 0);
 
   int getID();
   std::string getDescripcion();
@@ -29,6 +27,5 @@ public:
   void setFechaLimite(Fecha fechaLimite);
   void setNivelDificultad(int nivelDificultad);
   void setEstado(int estado);
-
 };
 
