@@ -16,6 +16,7 @@ public:
   Tarea();
   Tarea(int ID, std::string descripcion, Fecha fechaLimite, int nivel, int estado = 0);
 
+
   int getID();
   std::string getDescripcion();
   Fecha getFechaLimite();

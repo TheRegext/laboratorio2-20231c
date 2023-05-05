@@ -1,8 +1,7 @@
 #pragma once
 #include <string>
-#include "Tarea.h"
 
-Tarea cargarTarea();
-void mostrarTarea(Tarea tarea);
+#include "Fecha.h"
+
 int getInteger(int minimo, int maximo);
 int diferenciaDias(Fecha fechaInicial, Fecha fechaFinal);

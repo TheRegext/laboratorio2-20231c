@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -36,6 +38,10 @@
 		<Unit filename="Fecha.h" />
 		<Unit filename="Tarea.cpp" />
 		<Unit filename="Tarea.h" />
+		<Unit filename="TareaArchivo.cpp" />
+		<Unit filename="TareaArchivo.h" />
+		<Unit filename="TareaMenu.cpp" />
+		<Unit filename="TareaMenu.h" />
 		<Unit filename="funciones.cpp" />
 		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />
