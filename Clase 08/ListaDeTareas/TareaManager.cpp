@@ -1,9 +1,16 @@
 #include <iostream>
 #include "TareaManager.h"
-#include "funciones.h"
 
 using namespace std;
 
+
+
+/*
+Cargar
+Editar
+Listar todos
+Listar x ID
+*/
 void TareaManager::Cargar()
 {
 	string descripcion;
