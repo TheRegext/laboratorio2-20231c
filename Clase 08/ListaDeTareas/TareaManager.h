@@ -14,6 +14,8 @@ public:
 
 private:
 	TareaArchivo _archivo;
+
+	bool ExisteId(int id);
 };
 
 #endif
