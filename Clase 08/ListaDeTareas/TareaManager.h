@@ -9,6 +9,7 @@ public:
 	void ListarTodos();
 	void ListarXId();
 	void Editar();
+	void Eliminar();
 
 	void Listar(Tarea tarea);
 

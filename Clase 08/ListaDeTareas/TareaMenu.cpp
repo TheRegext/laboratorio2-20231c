@@ -15,6 +15,7 @@ void TareaMenu::Mostrar()
         cout << "2. Editar" << endl;
         cout << "3. Listar todos" << endl;
         cout << "4. Listar x ID" << endl;
+        cout << "5. Eliminar" << endl;
         cout << endl;
         cout << "0. Salir" << endl;
         cout << "---------------" << endl;
@@ -34,6 +35,9 @@ void TareaMenu::Mostrar()
             break;
         case 4:
 			_tareaManager.ListarXId();
+            break;
+        case 5:
+            _tareaManager.Eliminar();
             break;
         }
 

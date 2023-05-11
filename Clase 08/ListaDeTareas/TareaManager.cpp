@@ -69,8 +69,11 @@ void TareaManager::ListarTodos()
 	for (int i = 0; i<cantidadRegistros; i++)
 	{
 		Tarea reg = _archivo.leer(i);
-		Listar(reg);
-		cout << endl;
+        if (!reg.getEliminado())
+        {
+            Listar(reg);
+            cout << endl;
+        }
 	}
 }
 
@@ -128,6 +131,37 @@ void TareaManager::Editar()
 		cout << "No existe el registro con ID #" << id << endl;
 	}
 }
+
+void TareaManager::Eliminar()
+{
+    /*
+    pedir el id
+    buscarlo
+    cambiar el estado
+    guardarlo
+    */
+	Tarea reg;
+	int id, posicion;
+	cout << "ID a buscar: ";
+	cin >> id;
+	cout << endl;
+
+	posicion = _archivo.buscar(id);
+	if (posicion >= 0)
+	{
+		reg = _archivo.leer(posicion);
+		Listar(reg);
+		cout << endl;
+		reg.setEliminado(true);
+		_archivo.guardar(reg, posicion);
+		cout << "Registro #" << id << " eliminado correctamente" << endl;
+	}
+	else
+	{
+		cout << "No existe el registro con ID #" << id << endl;
+	}
+}
+
 
 
 bool TareaManager::ExisteId(int id)

@@ -9,14 +9,16 @@ Tarea::Tarea(){
   strcpy(_descripcion, "");
   _nivel = 0;
   _estado = 0;
+  _eliminado = false;
 }
 
-Tarea::Tarea(int ID, string descripcion, Fecha fechaLimite, int nivel, int estado){
+Tarea::Tarea(int ID, string descripcion, Fecha fechaLimite, int nivel, int estado, bool eliminado){
    _ID = ID;
    strcpy(_descripcion, descripcion.c_str());
    _nivel = nivel;
    _estado = estado;
    _fechaLimite = fechaLimite;
+   _eliminado = eliminado;
 }
 
 int Tarea::getID(){
@@ -46,6 +48,9 @@ std::string Tarea::getDescripcionEstado(){
    }
    return "Pendiente";
 }
+bool Tarea::getEliminado(){
+   return _eliminado;
+}
 
 void Tarea::setID(int ID){
    _ID = ID;
@@ -61,4 +66,7 @@ void Tarea::setNivelDificultad(int nivelDificultad){
 }
 void Tarea::setEstado(int estado){
    _estado = estado;
+}
+void Tarea::setEliminado(bool eliminado){
+   _eliminado = eliminado;
 }
