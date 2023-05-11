@@ -16,6 +16,7 @@ private:
 	TareaArchivo _archivo;
 
 	bool ExisteId(int id);
+	int GenerarId();
 };
 
 #endif

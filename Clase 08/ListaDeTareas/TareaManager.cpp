@@ -18,14 +18,17 @@ void TareaManager::Cargar()
 	int dia, mes, anio;
 	int dificultad;
 
-	cout << "Ingrese el ID: ";
-	cin >> id;
+//	cout << "Ingrese el ID: ";
+//	cin >> id;
 
-    if (ExisteId(id))
-    {
-        cout << "ID repetido" << endl;
-        return;
-    }
+//    if (ExisteId(id))
+//    {
+//        cout << "ID repetido" << endl;
+//        return;
+//    }
+    id = GenerarId();
+    cout << "ID Tarea #" << id << endl;
+
 
 	cout << "Ingrese la descripción de la tarea: ";
 	cin.ignore();
@@ -139,5 +142,15 @@ bool TareaManager::ExisteId(int id)
     {
         return false;
     }
+    */
+}
+
+int TareaManager::GenerarId()
+{
+    return _archivo.getCantidadRegistros() + 1;
+    /*
+    int proximoId = _archivo.getCantidadRegistros();
+    proximoId++;
+    return proximoId;
     */
 }
