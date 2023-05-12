@@ -5,12 +5,6 @@ using namespace std;
 
 #include "funciones.h"
 
-/*
-Cargar
-Editar
-Listar todos
-Listar x ID
-*/
 void TareaManager::Cargar()
 {
 	string descripcion;
@@ -75,6 +69,52 @@ void TareaManager::ListarTodos()
             cout << endl;
         }
 	}
+}
+
+void TareaManager::Ordenar(Tarea *vec, int cantidadRegistros) {
+	int mayor = 0;
+	Tarea aux; // lo necesitamos unicamente en este metodo
+	
+	for (int i = 0; i < cantidadRegistros-1; i++) {
+		mayor = i;
+		
+		for (int j = i + 1; j < cantidadRegistros; j++) {
+			//if(_peliculas[j].getFechaPublicacion().toString("YYYY/MM/DD") > _peliculas[mayor].getFechaPublicacion().toString("YYYY/MM/DD")) {
+			//if(_peliculas[j].getTitulo().size() > _peliculas[mayor].getTitulo().size()) {
+			
+			if (vec[j].getFechaLimite().toString("YYYY/MM/DD") > vec[mayor].getFechaLimite().toString("YYYY/MM/DD")) {
+				mayor = j;
+			}
+		}
+		
+		if (i != mayor) {
+			aux = vec[i]; // se hace una copia del objeto 
+			vec[i] = vec[mayor];
+			vec[mayor] = aux;
+		}
+		// mayor
+	}
+}
+
+void TareaManager::ListarOrdenadosPorFecha(){
+	int cantidadRegistros = _archivo.getCantidadRegistros();
+	Tarea *vec = new Tarea[cantidadRegistros];
+	
+	if (vec == nullptr){
+		cout << "Error al visualizar el listado";
+		return;
+	}
+	
+	_archivo.leer(vec, cantidadRegistros);
+	Ordenar(vec, cantidadRegistros);
+	
+	for(int i=0; i<cantidadRegistros; i++){
+		Listar(vec[i]);
+		cout << endl;
+	}
+	
+	delete []vec;
+	
 }
 
 void TareaManager::ListarXId()
@@ -187,4 +227,66 @@ int TareaManager::GenerarId()
     proximoId++;
     return proximoId;
     */
+}
+
+void TareaManager::HacerCopiaDeSeguridad(){
+	/*
+		ArchivoDAT = Archivo donde trabajan las acciones del menú (Cargar, Listar, Editar)
+		ArchivoBKP = Archivo de respaldo
+	
+		Leer todos los registros ArchivoDAT en un vector dinámico X
+		Vaciar ArchivoBKP X
+		Guardar todos los registros del vector en ArchivoBKP 
+		
+	*/
+	int cantidadRegistros = _archivo.getCantidadRegistros();
+	Tarea *vec = new Tarea[cantidadRegistros];
+	
+	if (vec == nullptr){
+		cout << "Falla al realizar backup" << endl;
+		return;
+	}
+	
+	_archivo.leer(vec, cantidadRegistros);
+	_archivoBkp.vaciar();
+	if (_archivoBkp.guardar(vec, cantidadRegistros)){
+		cout << "Backup realizado correctamente" << endl;
+	}
+	else{
+		cout << "Falla al realizar backup" << endl;
+	}
+	
+	delete []vec;
+}
+
+void TareaManager::RestaurarCopiaDeSeguridad(){
+	/*
+	ArchivoDAT = Archivo donde trabajan las acciones del menú (Cargar, Listar, Editar)
+	ArchivoBKP = Archivo de respaldo
+	
+	Leer todos los registros ArchivoBKP en un vector dinámico
+	Vaciar ArchivoDAT
+	Guardar todos los registros del vector en ArchivoDAT
+	
+	*/
+	int cantidadRegistros = _archivoBkp.getCantidadRegistros();
+	Tarea *vec = new Tarea[cantidadRegistros];
+	
+	if (vec == nullptr){
+		cout << "Falla al restaurar backup" << endl;
+		return;
+	}
+	
+	_archivoBkp.leer(vec, cantidadRegistros);
+	_archivo.vaciar();
+	if (_archivo.guardar(vec, cantidadRegistros)){
+		cout << "Backup restaurado correctamente" << endl;
+	}
+	else{
+		cout << "Falla al restaurar backup" << endl;
+	}
+	
+	delete []vec;
+	
+	
 }

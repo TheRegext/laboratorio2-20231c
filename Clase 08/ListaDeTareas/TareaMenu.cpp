@@ -15,8 +15,12 @@ void TareaMenu::Mostrar()
         cout << "2. Editar" << endl;
         cout << "3. Listar todos" << endl;
         cout << "4. Listar x ID" << endl;
-        cout << "5. Eliminar" << endl;
-        cout << endl;
+		cout << "5. Listar ordenado" << endl;
+        cout << "6. Eliminar" << endl;
+		cout << "---------------" << endl;
+		cout << "10. Hacer copia de seguridad" << endl;
+		cout << "11. Restaurar copia de seguridad" << endl;
+		cout << "---------------" << endl;
         cout << "0. Salir" << endl;
         cout << "---------------" << endl;
         cout << endl;
@@ -36,9 +40,18 @@ void TareaMenu::Mostrar()
         case 4:
 			_tareaManager.ListarXId();
             break;
-        case 5:
+		case 5:
+			_tareaManager.ListarOrdenadosPorFecha();
+			break;
+        case 6:
             _tareaManager.Eliminar();
             break;
+		case 10:
+			_tareaManager.HacerCopiaDeSeguridad();
+			break;
+		case 11:
+			_tareaManager.RestaurarCopiaDeSeguridad();
+			break;
         }
 
     }

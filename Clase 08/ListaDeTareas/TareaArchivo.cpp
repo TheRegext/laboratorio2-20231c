@@ -58,6 +58,19 @@ bool TareaArchivo::guardar(Tarea reg, int posicionAReemplazar)
     return pudoEscribir;
 }
 
+bool TareaArchivo::guardar(Tarea *vec, int cantidadRegistrosAEscribir){
+	FILE *p = fopen(_ruta.c_str(), "ab");
+	if (p == NULL)
+	{
+		return false;
+	}
+	
+	int cantidadRegistrosEscritos = fwrite(vec, sizeof(Tarea), cantidadRegistrosAEscribir, p);
+	fclose(p);
+	return cantidadRegistrosEscritos == cantidadRegistrosAEscribir;
+}
+
+
 Tarea TareaArchivo::leer(int nroRegistro)
 {
     Tarea aux;
@@ -71,6 +84,17 @@ Tarea TareaArchivo::leer(int nroRegistro)
     fread(&aux, sizeof(Tarea), 1, p);
     fclose(p);
     return aux;
+}
+
+void TareaArchivo::leer(Tarea *vec, int cantidadRegistrosALeer){
+	FILE *p = fopen(_ruta.c_str(), "rb");
+	if (p == NULL)
+	{
+		return ;
+	}
+	
+	fread(vec, sizeof(Tarea), cantidadRegistrosALeer, p);
+	fclose(p);
 }
 
 int TareaArchivo::buscar(int ID)
@@ -89,3 +113,11 @@ int TareaArchivo::buscar(int ID)
     return -1;
 }
 
+void TareaArchivo::vaciar(){
+	FILE *p = fopen(_ruta.c_str(), "wb");
+	if (p == NULL)
+	{
+		return ;
+	}
+	fclose(p);
+}
