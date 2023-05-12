@@ -36,10 +36,14 @@
 		</Compiler>
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="Programa.cpp" />
+		<Unit filename="Programa.h" />
 		<Unit filename="Tarea.cpp" />
 		<Unit filename="Tarea.h" />
 		<Unit filename="TareaArchivo.cpp" />
 		<Unit filename="TareaArchivo.h" />
+		<Unit filename="TareaManager.cpp" />
+		<Unit filename="TareaManager.h" />
 		<Unit filename="TareaMenu.cpp" />
 		<Unit filename="TareaMenu.h" />
 		<Unit filename="funciones.cpp" />
